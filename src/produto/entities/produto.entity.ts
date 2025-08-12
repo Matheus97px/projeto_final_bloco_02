@@ -1,6 +1,7 @@
 import { IsBoolean, IsDate, IsNotEmpty, Min } from "class-validator";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Categoria } from "../../categoria/entities/categoria.entity";
+import { Usuario } from "../../usuario/entities/usuario.entity";
 
 
 @Entity({ name: "tb_produtos" })
@@ -41,5 +42,10 @@ export class Produto {
     @JoinColumn({ name: "categoria_id" })
     categoria: Categoria;
 
+    @ManyToOne(() => Usuario, (usuario) => usuario.produto, {
+        onDelete: "CASCADE"
+    })
+    @JoinColumn({ name: "usuario_id" })
+    usuario: Usuario
 
 }

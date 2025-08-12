@@ -4,6 +4,9 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { ProdutoModule } from './produto/produto.module';
 import { Produto } from './produto/entities/produto.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsuarioModule } from './usuario/usuario.module';
+import { Usuario } from './usuario/entities/usuario.entity';
 
 @Module({
   imports: [
@@ -14,11 +17,11 @@ import { Produto } from './produto/entities/produto.entity';
       username: 'root',
       password: 'root',
       database: 'db_farmaciagb',
-      entities: [Categoria, Produto],
+      entities: [Categoria, Produto, Usuario],
       synchronize: true,
       logging: true
     }),
-    CategoriaModule, ProdutoModule
+    CategoriaModule, ProdutoModule, AuthModule, UsuarioModule
   ],
   controllers: [],
   providers: [],
